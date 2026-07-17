@@ -1,4 +1,4 @@
-const CACHE_NAME = 'flowtrack-v4';
+const CACHE_NAME = 'flowtrack-v5';
 const ASSETS = [
   './index.html',
   './icon-192.png',

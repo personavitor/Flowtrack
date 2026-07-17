@@ -38,10 +38,8 @@ body[data-theme="cinza"]{--bg:#2C2C2E;--surface:#383838;--surface2:#444446;--bor
 .theme-dot.active{border-color:var(--mint)}
 .theme-label{font-size:10px;color:var(--text-dim);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px;display:block}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-button,.nav-btn,.theme-dot,.sub-tab,a{touch-action:manipulation}
-body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;display:flex;overflow:hidden}
-.sidebar{width:var(--sidebar);min-height:100vh;min-height:100dvh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:24px 0;position:fixed;left:0;top:0;bottom:0;z-index:100;transition:transform .3s;padding-top:calc(24px + env(safe-area-inset-top));padding-bottom:env(safe-area-inset-bottom)}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow:hidden}
+.sidebar{width:var(--sidebar);min-height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:24px 0;position:fixed;left:0;top:0;bottom:0;z-index:100;transition:transform .3s}
 .logo{padding:0 20px 24px;border-bottom:1px solid var(--border)}
 .logo-mark{display:flex;align-items:center;gap:10px}
 .logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--mint),var(--lilac));border-radius:10px;display:grid;place-items:center;font-size:18px}
@@ -56,8 +54,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .sidebar-footer{padding:16px 20px;border-top:1px solid var(--border)}
 .date-display{font-size:12px;color:var(--text-dim);line-height:1.6}
 .date-display strong{display:block;color:var(--text-mid);font-weight:600;font-size:13px;margin-bottom:2px}
-.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;overflow-y:auto;max-height:100vh;max-height:100dvh}
-.topbar{padding:20px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:50;padding-top:calc(20px + env(safe-area-inset-top));gap:10px}
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh;overflow-y:auto;max-height:100vh}
+.topbar{padding:20px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:50}
 .page-title{font-size:18px;font-weight:700;letter-spacing:-.3px}
 .page-title span{color:var(--mint)}
 .topbar-actions{display:flex;gap:10px;align-items:center}
@@ -182,54 +180,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
 .hamburger{display:none;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:7px 10px;cursor:pointer;color:var(--text);font-size:18px}
-.save-status{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--text-dim);font-weight:500;padding:6px 10px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);user-select:none;flex-shrink:0}
-.save-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);flex-shrink:0;transition:transform .2s,box-shadow .2s}
-.save-status.saving .save-dot{animation:saveDotPulse .5s ease}
-.save-status.error{color:var(--rose);border-color:var(--rose)}
-.save-status.error .save-dot{background:var(--rose)}
-@keyframes saveDotPulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(110,231,183,.5)}50%{transform:scale(1.6);box-shadow:0 0 0 5px rgba(110,231,183,0)}100%{transform:scale(1)}}
-
-/* ===== Responsividade Android (telas de 320px a 768px) ===== */
-@media(max-width:768px){
-  body{overflow:auto}
-  .sidebar{transform:translateX(-100%)}
-  .sidebar.open{transform:translateX(0)}
-  .main{margin-left:0}
-  .hamburger{display:flex;min-width:40px;min-height:40px}
-  .score-hero{flex-direction:column}
-  .score-stats{grid-template-columns:1fr 1fr}
-  .two-col,.three-col{grid-template-columns:1fr}
-  .content{padding:16px;padding-bottom:calc(90px + env(safe-area-inset-bottom))}
-  .topbar{padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top))}
-  .page-title{font-size:15.5px}
-  .week-grid{grid-template-columns:repeat(7,1fr)}
-  /* Evita zoom automático do Android/Chrome ao focar campos (exige font-size >= 16px) */
-  input,select,textarea{font-size:16px !important}
-  .btn,.nav-btn,.sub-tab,.theme-dot,.hamburger,.fab-btn,.widget-toggle,.task-check,button{min-height:40px}
-  .btn{padding:9px 16px}
-  .sub-tab{padding:9px 16px;min-height:36px}
-}
-@media(max-width:480px){
-  .save-status .save-status-text{display:none}
-  .save-status{padding:7px;gap:0}
-  .score-stats{grid-template-columns:1fr 1fr}
-  .week-grid{gap:3px}
-  .week-day-cell .wday{font-size:11px}
-  .project-grid{grid-template-columns:1fr 1fr}
-  :root{--sidebar:82vw}
-}
-@media(max-width:360px){
-  .content{padding:12px;padding-bottom:calc(88px + env(safe-area-inset-bottom))}
-  .topbar{padding:12px}
-  .page-title{font-size:14px}
-  .score-stats{grid-template-columns:1fr}
-  .project-grid{grid-template-columns:1fr}
-  .btn{padding:8px 12px;font-size:12px}
-}
-@media(max-width:768px) and (orientation:landscape){
-  .sidebar{width:200px}
-  .focus-ring-wrap,.focus-ring-svg{width:150px;height:150px}
-}
+@media(max-width:768px){body{overflow:auto}.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.hamburger{display:flex}.score-hero{flex-direction:column}.score-stats{grid-template-columns:1fr 1fr}.two-col,.three-col{grid-template-columns:1fr}.content{padding:16px}.topbar{padding:14px 16px}.week-grid{grid-template-columns:repeat(7,1fr)}}
+@media(max-width:480px){.score-stats{grid-template-columns:1fr 1fr}.week-grid{gap:3px}.week-day-cell .wday{font-size:11px}}
 .goal-item{margin-bottom:14px}
 .goal-header{display:flex;justify-content:space-between;margin-bottom:6px}
 .goal-name{font-size:13px;font-weight:500}
@@ -298,54 +250,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .focus-controls [data-lucide]{width:14px;height:14px;margin-right:4px;vertical-align:-2px}
 .focus-task-done-row{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-mid);cursor:pointer}
 @media(max-width:480px){.focus-ring-wrap{width:170px;height:170px}.focus-ring-svg{width:170px;height:170px}.focus-time{font-size:30px}.focus-task-name{font-size:17px}}
-
-/* ===== BOTÕES FLUTUANTES ===== */
-.fab-container{position:fixed;bottom:24px;right:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.fab-btn{width:52px;height:52px;border-radius:50%;border:none;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;flex-shrink:0}
-.fab-btn:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(0,0,0,.45)}
-.fab-btn:active{transform:scale(.95)}
-.fab-btn.primary{background:linear-gradient(135deg,var(--mint),#4ADE80);color:#0D0F14}
-.fab-btn.secondary{background:var(--surface2);border:1px solid var(--border);color:var(--mint)}
-.fab-btn [data-lucide]{width:22px;height:22px;stroke-width:2.2}
-.fab-label{position:absolute;right:62px;background:var(--surface2);border:1px solid var(--border);color:var(--text-mid);padding:5px 12px;border-radius:8px;font-size:12px;font-weight:500;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;transform:translateX(6px)}
-.fab-btn:hover .fab-label{opacity:1;transform:translateX(0)}
-.fab-wrapper{position:relative;display:flex;align-items:center}
-
-/* ===== WIDGET ===== */
-.widget-panel{position:fixed;bottom:24px;left:24px;z-index:90;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.widget-toggle{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface2);color:var(--text-dim);display:grid;place-items:center;cursor:pointer;transition:all .2s}
-.widget-toggle:hover{color:var(--mint);border-color:var(--mint)}
-.widget-toggle [data-lucide]{width:18px;height:18px}
-.widget-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;width:260px;box-shadow:0 8px 32px rgba(0,0,0,.4);display:none}
-.widget-card.open{display:block;animation:widgetIn .25s ease}
-@keyframes widgetIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.widget-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.widget-ring-wrap{position:relative;width:70px;height:70px;margin:0 auto 10px}
-.widget-ring-svg{transform:rotate(-90deg)}
-.widget-ring-bg{fill:none;stroke:var(--border);stroke-width:6}
-.widget-ring-fg{fill:none;stroke:var(--mint);stroke-width:6;stroke-linecap:round;stroke-dasharray:188;stroke-dashoffset:188;transition:stroke-dashoffset .8s ease}
-.widget-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:15px;font-weight:600;color:var(--mint)}
-.widget-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.widget-stat{text-align:center;padding:8px;background:var(--surface2);border-radius:8px}
-.widget-stat-val{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--mint)}
-.widget-stat-name{font-size:10px;color:var(--text-dim);margin-top:2px}
-.widget-empty{font-size:12px;color:var(--text-dim);text-align:center;padding:12px 0}
-.widget-quickadd{display:flex;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
-.widget-quickadd input{flex:1;min-width:0;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 10px;color:var(--text);font-family:var(--font);font-size:12.5px;outline:none}
-.widget-quickadd input:focus{border-color:var(--mint)}
-.widget-quickadd button{background:var(--mint);border:none;border-radius:var(--radius-sm);width:32px;flex-shrink:0;display:grid;place-items:center;cursor:pointer;color:#0D0F14}
-.widget-quickadd button [data-lucide]{width:15px;height:15px;stroke-width:2.4}
-
-@media(max-width:768px){
-  .fab-container{bottom:calc(16px + env(safe-area-inset-bottom));right:16px}
-  .widget-panel{bottom:calc(16px + env(safe-area-inset-bottom));left:16px}
-  .widget-card{width:min(220px,calc(100vw - 32px));padding:12px 14px}
-}
-@media(max-width:360px){
-  .fab-btn{width:46px;height:46px}
-  .fab-label{display:none}
-}
-
 </style>
 </head>
 <body data-theme="preto">
@@ -354,8 +258,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 <aside class="sidebar" id="sidebar">
   <div class="logo">
     <div class="logo-mark">
-      <div class="logo-icon" style="background:transparent;padding:0;overflow:hidden">
-        <img src="./icon-192.png" alt="FlowTrack" style="width:100%;height:100%;object-fit:cover;border-radius:10px">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <div>
         <div class="logo-text">FlowTrack</div>
@@ -416,10 +320,8 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="page-title" id="page-title">Hoje — <span>Dashboard</span></div>
     </div>
     <div class="topbar-actions">
-      <div class="save-status" id="save-status" title="Tudo é salvo automaticamente neste dispositivo">
-        <span class="save-dot"></span>
-        <span class="save-status-text">Salvo</span>
-      </div>
+      <button class="btn btn-ghost btn-sm" onclick="openFocusSetup()"><i data-lucide="zap"></i> Foco Total</button>
+      <button class="btn btn-ghost btn-sm" onclick="openModal()"><i data-lucide="plus"></i> Nova Tarefa</button>
     </div>
   </header>
 
@@ -855,24 +757,15 @@ function save() {
   try {
     localStorage.setItem(KEY, JSON.stringify(DATA));
     updateDayScore();
-    flashSaveStatus(true);
   } catch (e) {
     console.error('Erro ao salvar:', e);
-    showToast('Erro ao salvar dados! O armazenamento do dispositivo pode estar cheio ou bloqueado.');
-    flashSaveStatus(false);
+    showToast('Erro ao salvar dados!');
   }
 }
 
-function flashSaveStatus(ok) {
-  const el = document.getElementById('save-status');
-  if (!el) return;
-  const label = el.querySelector('.save-status-text');
-  el.classList.toggle('error', !ok);
-  if (label) label.textContent = ok ? 'Salvo' : 'Erro';
-  if (ok) {
-    el.classList.add('saving');
-    setTimeout(() => el.classList.remove('saving'), 500);
-  }
+function saveAll() {
+  save();
+  showToast('Dados salvos com sucesso ✓');
 }
 
 function todayStr() {
@@ -929,78 +822,6 @@ const titles = {
   projetos: '📁 Projetos',
   notas: '📝 Anotações'
 };
-
-
-/* ===================== WIDGET ===================== */
-let widgetOpen = false;
-
-function toggleWidget() {
-  const card = document.getElementById('widget-card');
-  if (!card) return;
-  widgetOpen = !widgetOpen;
-  card.classList.toggle('open', widgetOpen);
-  if (widgetOpen) updateWidget();
-}
-
-function updateWidget() {
-  const td = todayStr();
-  const dated = DATA.tasks.filter(t => t.when !== 'recorrente' && t.date === td);
-  const recurring = DATA.tasks.filter(t => t.when === 'recorrente' && (!t.created || t.created <= td));
-  const todayTasks = [...dated, ...recurring];
-  const done = todayTasks.filter(t => isTaskDone(t)).length;
-  const total = todayTasks.length;
-  const pct = total ? Math.round(done / total * 100) : 0;
-
-  const circ = 2 * Math.PI * 30;
-  const offset = circ - (pct / 100) * circ;
-  const ringFg = document.getElementById('widget-ring-fg');
-  if (ringFg) ringFg.style.strokeDashoffset = offset;
-  const ringLabel = document.getElementById('widget-ring-label');
-  if (ringLabel) ringLabel.textContent = pct + '%';
-
-  const wDone = document.getElementById('widget-done');
-  if (wDone) wDone.textContent = done;
-  const wTotal = document.getElementById('widget-total');
-  if (wTotal) wTotal.textContent = total;
-
-  let streak = 0;
-  let d = new Date(); d.setDate(d.getDate() - 1);
-  while (true) {
-    const k = d.toISOString().slice(0, 10);
-    if (DATA.dayScores[k] !== undefined && DATA.dayScores[k] > 0) { streak++; d.setDate(d.getDate() - 1); }
-    else break;
-    if (streak > 365) break;
-  }
-  const wStreak = document.getElementById('widget-streak');
-  if (wStreak) wStreak.textContent = streak;
-
-  const focusMins = (DATA.focusLog && DATA.focusLog[td]) || 0;
-  const wFocus = document.getElementById('widget-focus');
-  if (wFocus) wFocus.textContent = focusMins;
-}
-function quickAddFromWidget() {
-  const input = document.getElementById('widget-quickadd-input');
-  if (!input) return;
-  const text = input.value.trim();
-  if (!text) return;
-  DATA.tasks.push({
-    id: Date.now(),
-    text,
-    cat: 'pessoal',
-    prio: 'media',
-    when: 'hoje',
-    date: todayStr(),
-    created: todayStr(),
-    done: false
-  });
-  save();
-  renderTasks();
-  renderHeroStats();
-  updateWidget();
-  input.value = '';
-  showToast('Tarefa adicionada ✓');
-}
-/* =================== FIM WIDGET ==================== */
 
 function showView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -1072,29 +893,9 @@ function addTask() {
   showToast('Tarefa adicionada!');
 }
 
-function playTickSound() {
-  try {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(1200, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.1);
-    gain.gain.setValueAtTime(0.15, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-    osc.start(ctx.currentTime);
-    osc.stop(ctx.currentTime + 0.12);
-  } catch (e) {}
-}
-
 function toggleTask(id) {
   const t = DATA.tasks.find(x => x.id === id);
   if (!t) return;
-  const wasDone = isTaskDone(t);
   if (t.when === 'recorrente') {
     t.doneDates = t.doneDates || [];
     const td = todayStr();
@@ -1103,7 +904,6 @@ function toggleTask(id) {
   } else {
     t.done = !t.done;
   }
-  if (!wasDone && isTaskDone(t)) playTickSound();
   save(); renderTasks(); renderHeroStats();
 }
 
@@ -1312,12 +1112,7 @@ function toggleProjectTask(pid, tid) {
   const project = DATA.projects.find(p => p.id === pid);
   if (!project) return;
   const task = project.tasks.find(t => t.id === tid);
-  if (task) { 
-    const wasDone = task.done;
-    task.done = !task.done; 
-    if (!wasDone && task.done) playTickSound();
-    save(); renderProjects(); 
-  }
+  if (task) { task.done = !task.done; save(); renderProjects(); }
 }
 
 function deleteProjectTask(pid, tid) {
@@ -1469,7 +1264,6 @@ function renderHeroStats() {
   if (miniChartCanvas && document.getElementById('view-hoje').classList.contains('active')) {
     renderMiniWeekChart();
   }
-  updateWidget();
 }
 
 let charts = {};
@@ -2093,7 +1887,6 @@ function confirmEndFocus() {
   if (markDone && markDone.checked && focusState.taskId) {
     const t = DATA.tasks.find(x => x.id === focusState.taskId);
     if (t) {
-      const wasDone = isTaskDone(t);
       if (t.when === 'recorrente') {
         t.doneDates = t.doneDates || [];
         const td = todayStr();
@@ -2101,7 +1894,6 @@ function confirmEndFocus() {
       } else {
         t.done = true;
       }
-      if (!wasDone) playTickSound();
     }
     if (markDone) markDone.checked = false;
   }
@@ -2293,79 +2085,6 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
-
-/* Atalhos do ícone do app (long-press no Android) definidos em manifest.json > shortcuts */
-(function handleAppShortcuts() {
-  const params = new URLSearchParams(location.search);
-  const action = params.get('action');
-  if (!action) return;
-  window.history.replaceState({}, '', location.pathname);
-  setTimeout(() => {
-    if (action === 'nova-tarefa') openModal();
-    else if (action === 'foco') openFocusSetup();
-    else if (action === 'widget') toggleWidget();
-  }, 150);
-})();
-
-document.getElementById('widget-quickadd-input')?.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') { e.preventDefault(); quickAddFromWidget(); }
-});
 </script>
-
-<!-- BOTÕES FLUTUANTES -->
-<div class="fab-container">
-  <div class="fab-wrapper">
-    <button class="fab-btn secondary" onclick="openFocusSetup()" aria-label="Foco Total">
-      <i data-lucide="zap"></i>
-      <span class="fab-label">Foco Total</span>
-    </button>
-  </div>
-  <div class="fab-wrapper">
-    <button class="fab-btn primary" onclick="openModal()" aria-label="Nova Tarefa">
-      <i data-lucide="plus"></i>
-      <span class="fab-label">Nova Tarefa</span>
-    </button>
-  </div>
-</div>
-
-<!-- WIDGET -->
-<div class="widget-panel">
-  <button class="widget-toggle" onclick="toggleWidget()" aria-label="Widget de produtividade" title="Widget">
-    <i data-lucide="gauge"></i>
-  </button>
-  <div class="widget-card" id="widget-card">
-    <div class="widget-title"><i data-lucide="activity" style="width:14px;height:14px;color:var(--mint)"></i> Hoje</div>
-    <div class="widget-ring-wrap">
-      <svg class="widget-ring-svg" width="70" height="70" viewBox="0 0 70 70">
-        <circle class="widget-ring-bg" cx="35" cy="35" r="30"/>
-        <circle class="widget-ring-fg" id="widget-ring-fg" cx="35" cy="35" r="30"/>
-      </svg>
-      <div class="widget-ring-label" id="widget-ring-label">0%</div>
-    </div>
-    <div class="widget-stats">
-      <div class="widget-stat">
-        <div class="widget-stat-val" id="widget-done">0</div>
-        <div class="widget-stat-name">Concluídas</div>
-      </div>
-      <div class="widget-stat">
-        <div class="widget-stat-val" id="widget-total">0</div>
-        <div class="widget-stat-name">Total</div>
-      </div>
-      <div class="widget-stat">
-        <div class="widget-stat-val" id="widget-streak" style="color:var(--amber)">0</div>
-        <div class="widget-stat-name">Sequência</div>
-      </div>
-      <div class="widget-stat">
-        <div class="widget-stat-val" id="widget-focus" style="color:var(--lilac)">0</div>
-        <div class="widget-stat-name">Min Foco</div>
-      </div>
-    </div>
-    <div class="widget-quickadd">
-      <input type="text" id="widget-quickadd-input" placeholder="Adicionar tarefa rápida…" maxlength="120">
-      <button onclick="quickAddFromWidget()" aria-label="Adicionar tarefa"><i data-lucide="plus"></i></button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>

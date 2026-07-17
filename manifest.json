@@ -20,5 +20,28 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Nova Tarefa",
+      "short_name": "Nova Tarefa",
+      "description": "Adicionar uma nova tarefa rapidamente",
+      "url": "./index.html?action=nova-tarefa",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Foco Total",
+      "short_name": "Foco",
+      "description": "Iniciar uma sessão de foco",
+      "url": "./index.html?action=foco",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Resumo do Dia",
+      "short_name": "Resumo",
+      "description": "Ver progresso de hoje",
+      "url": "./index.html?action=widget",
+      "icons": [{ "src": "./icon-192.png", "sizes": "192x192" }]
+    }
   ]
 }
